@@ -1,0 +1,65 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>StayEase</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f5f7fb}
+#main{display:none}nav,footer{background:#1e3a8a;color:white;padding:18px;text-align:center}nav a{color:white;margin:15px;text-decoration:none}
+.hero{text-align:center;background:#2563eb;color:white;padding:50px}.search{text-align:center;background:white;padding:25px;margin:20px auto;max-width:900px}
+.search input{padding:12px;width:65%}button{padding:12px;background:#2563eb;color:white;border:0;border-radius:5px}
+.hotels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px 5%}.card{background:white;padding:15px;box-shadow:0 2px 8px #ccc}.card img{width:100%;height:150px;object-fit:cover}
+.login{height:100vh;display:flex;justify-content:center;align-items:center}.login div{background:white;padding:30px;text-align:center;box-shadow:0 2px 10px #aaa}.login input{display:block;padding:12px;margin:10px;width:250px}
+</style>
+</head>
+<body>
+
+<div class="login" id="login">
+<div><h1>🏨 StayEase</h1>
+<input id="e" placeholder="Email"><input id="p" type="password" placeholder="Password">
+<button onclick="login()">Login</button><p id="x"></p></div></div>
+
+<div id="main">
+<nav><h2>🏨 StayEase</h2>Home　 Hotels　 Features　 <a href="#" onclick="logout()">Logout</a></nav>
+
+<section class="hero"><h1>Find Your Perfect Stay</h1><p>Book hotels easily at the best prices</p></section>
+
+<div class="search"><h2>🔍 Search Hotels & Cities</h2>
+<input id="s" placeholder="Enter hotel or city name">
+<button onclick="search()">Search</button></div>
+
+<h2 style="text-align:center">🏨 Popular Hotels</h2>
+<div class="hotels">
+
+<script>
+let cities={
+Vijayawada:["Krishna Grand Hotel","River View Residency","Capital Comfort Hotel","Vijaya Palace","Golden Stay Inn","Elite Residency"],
+Hyderabad:["Hyderabad Grand Palace","Charminar Residency","Pearl City Hotel","Royal Deccan Hotel","Metro Comfort Inn","Lake View Suites"],
+Visakhapatnam:["Beach Grand Resort","Ocean Pearl Hotel","Vizag Comfort Inn","Sea Breeze Palace","Harbour View Hotel","Sunrise Residency"],
+Bangalore:["Tech City Grand","Garden City Hotel","Urban Elite Inn","Silicon Suites","Green Leaf Residency","Metro Plaza Hotel"],
+Chennai:["Chennai Grand Hotel","Marina Bay Resort","Coastal Comfort Inn","Royal Marina Hotel","South Gate Residency","Blue Wave Hotel"]};
+
+Object.keys(cities).forEach(c=>cities[c].forEach((h,i)=>document.write(
+`<div class="card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80">
+<h3>${h}</h3><p>${c}</p><b>₹${2600+i*300}</b><br><br><button onclick="book('${h}')">Book Now</button></div>`)));
+</script>
+
+</div>
+<footer>© 2026 StayEase | Hotel Booking Platform</footer>
+</div>
+
+<script>
+function login(){
+if(e.value=="tdp@gmail.com"&&p.value=="tdp@2024"){login.style.display="none";main.style.display="block"}
+else x.innerText="❌ Invalid Login"
+}
+function logout(){location.reload()}
+function search(){
+let v=s.value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none")
+}
+function book(h){alert("🎉 Booking confirmed for "+h)}
+</script>
+</body>
+</html>
+```

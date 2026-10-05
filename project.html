@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html> <head> <title>StayEase - Hotel Booking</title>
+
+<style> *{ box-sizing:border-box; } body{ margin:0; font-family:Arial,sans-serif; background:#f5f7fb; color:#222; } nav{ background:#1e3a8a; color:white; padding:18px 7%; display:flex; justify-content:space-between; align-items:center; } nav h2{ margin:0; } nav a{ color:white; text-decoration:none; margin-left:20px; } .hero{ background:#2563eb; color:white; text-align:center; padding:65px 20px; } .hero h1{ font-size:40px; margin:10px; } .search{ background:white; padding:20px; margin:-30px auto 35px; max-width:950px; border-radius:10px; box-shadow:0 3px 12px #aaa; text-align:center; } input,select,button{ padding:12px; margin:5px; border:1px solid #ddd; border-radius:5px; } .search input{ width:250px; } button{ background:#2563eb; color:white; border:0; cursor:pointer; } button:hover{ background:#1e40af; } .container{ width:90%; max-width:1100px; margin:auto; } .container h2{ text-align:center; } .hotels{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; } .card{ background:white; border-radius:10px; overflow:hidden; box-shadow:0 3px 10px #ddd; padding-bottom:18px; } .card img{ width:100%; height:180px; object-fit:cover; } .card h3, .card p{ margin-left:18px; } .card h3{ color:#1e3a8a; } .price{ color:#16a34a; font-size:19px; font-weight:bold; } .card button{ width:90%; margin-left:5%; } .features{ display:flex; justify-content:space-around; flex-wrap:wrap; text-align:center; margin:35px 0; } .feature{ background:white; padding:25px; margin:10px; width:200px; border-radius:10px; box-shadow:0 2px 8px #ddd; } footer{ background:#1e3a8a; color:white; text-align:center; padding:20px; margin-top:40px; } .modal{ display:none; position:fixed; inset:0; background:#0008; justify-content:center; align-items:center; z-index:10; } .box{ background:white; padding:25px; border-radius:10px; width:330px; } .box input, .box select{ width:100%; margin:7px 0; } .box button{ width:100%; margin:7px 0; } .close{ float:right; cursor:pointer; font-size:20px; } @media(max-width:600px){ nav{ flex-direction:column; gap:12px; } nav a{ margin:5px; } .hero h1{ font-size:30px; } .search input{ width:90%; } } </style>
+
+</head>
+
+<body>
+
+<nav> <h2>🏨 StayEase</h2>
+
+<div>
+    <a href="#">Home</a>
+    <a href="#hotels">Hotels</a>
+    <a href="#features">Features</a>
+    <a href="#" onclick="login()">Login</a>
+</div>
+
+</nav>
+
+<section class="hero"> <h1>Find Your Perfect Stay</h1> <p>Book hotels easily at the best prices</p> </section>
+
+<div class="search">
+
+<input id="search"
+       type="text"
+       placeholder="Search hotel or city">
+
+<input type="date">
+<input type="date">
+
+<select>
+    <option>1 Guest</option>
+    <option>2 Guests</option>
+    <option>3 Guests</option>
+    <option>4 Guests</option>
+</select>
+
+<button onclick="searchHotel()">Search</button>
+
+</div>
+
+<div class="container" id="hotels">
+
+<h2>🏨 Popular Hotels</h2>
+
+<div class="hotels">
+
+<!-- VIJAYAWADA -->
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"> <h3>Krishna Grand Hotel</h3> <p>📍 Vijayawada</p> <p class="price">₹2,800 / night</p> <button onclick="book('Krishna Grand Hotel','₹2,800')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80"> <h3>River View Inn</h3> <p>📍 Vijayawada</p> <p class="price">₹3,200 / night</p> <button onclick="book('River View Inn','₹3,200')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"> <h3>Vijay Comfort Hotel</h3> <p>📍 Vijayawada</p> <p class="price">₹2,500 / night</p> <button onclick="book('Vijay Comfort Hotel','₹2,500')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"> <h3>Royal Residency</h3> <p>📍 Vijayawada</p> <p class="price">₹3,800 / night</p> <button onclick="book('Royal Residency','₹3,800')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80"> <h3>City Palace Hotel</h3> <p>📍 Vijayawada</p> <p class="price">₹4,100 / night</p> <button onclick="book('City Palace Hotel','₹4,100')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80"> <h3>Sunrise Stay</h3> <p>📍 Vijayawada</p> <p class="price">₹2,900 / night</p> <button onclick="book('Sunrise Stay','₹2,900')">Book Now</button> </div>
+
+<!-- HYDERABAD -->
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"> <h3>Hyderabad Grand Palace</h3> <p>📍 Hyderabad</p> <p class="price">₹4,999 / night</p> <button onclick="book('Hyderabad Grand Palace','₹4,999')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=600&q=80"> <h3>Charminar Residency</h3> <p>📍 Hyderabad</p> <p class="price">₹3,700 / night</p> <button onclick="book('Charminar Residency','₹3,700')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"> <h3>Deccan Comfort Inn</h3> <p>📍 Hyderabad</p> <p class="price">₹3,400 / night</p> <button onclick="book('Deccan Comfort Inn','₹3,400')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80"> <h3>Royal Pearl Hotel</h3> <p>📍 Hyderabad</p> <p class="price">₹5,200 / night</p> <button onclick="book('Royal Pearl Hotel','₹5,200')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"> <h3>Metro Luxury Stay</h3> <p>📍 Hyderabad</p> <p class="price">₹4,300 / night</p> <button onclick="book('Metro Luxury Stay','₹4,300')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80"> <h3>Lake View Hotel</h3> <p>📍 Hyderabad</p> <p class="price">₹3,900 / night</p> <button onclick="book('Lake View Hotel','₹3,900')">Book Now</button> </div>
+
+<!-- BANGALORE -->
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"> <h3>Bangalore Urban Inn</h3> <p>📍 Bangalore</p> <p class="price">₹3,999 / night</p> <button onclick="book('Bangalore Urban Inn','₹3,999')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"> <h3>Tech City Hotel</h3> <p>📍 Bangalore</p> <p class="price">₹4,500 / night</p> <button onclick="book('Tech City Hotel','₹4,500')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80"> <h3>Garden City Residency</h3> <p>📍 Bangalore</p> <p class="price">₹3,600 / night</p> <button onclick="book('Garden City Residency','₹3,600')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80"> <h3>Silicon Grand Hotel</h3> <p>📍 Bangalore</p> <p class="price">₹5,000 / night</p> <button onclick="book('Silicon Grand Hotel','₹5,000')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"> <h3>Green Park Inn</h3> <p>📍 Bangalore</p> <p class="price">₹3,200 / night</p> <button onclick="book('Green Park Inn','₹3,200')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80"> <h3>Elite Business Hotel</h3> <p>📍 Bangalore</p> <p class="price">₹4,700 / night</p> <button onclick="book('Elite Business Hotel','₹4,700')">Book Now</button> </div>
+
+<!-- CHENNAI -->
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80"> <h3>Sea Breeze Hotel</h3> <p>📍 Chennai</p> <p class="price">₹4,299 / night</p> <button onclick="book('Sea Breeze Hotel','₹4,299')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"> <h3>Marina Grand Hotel</h3> <p>📍 Chennai</p> <p class="price">₹4,800 / night</p> <button onclick="book('Marina Grand Hotel','₹4,800')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=600&q=80"> <h3>Chennai Comfort Inn</h3> <p>📍 Chennai</p> <p class="price">₹3,100 / night</p> <button onclick="book('Chennai Comfort Inn','₹3,100')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"> <h3>Bay View Residency</h3> <p>📍 Chennai</p> <p class="price">₹3,900 / night</p> <button onclick="book('Bay View Residency','₹3,900')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80"> <h3>Golden Sands Hotel</h3> <p>📍 Chennai</p> <p class="price">₹5,100 / night</p> <button onclick="book('Golden Sands Hotel','₹5,100')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"> <h3>Southern Star Hotel</h3> <p>📍 Chennai</p> <p class="price">₹3,500 / night</p> <button onclick="book('Southern Star Hotel','₹3,500')">Book Now</button> </div>
+
+<!-- GOA -->
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=600&q=80"> <h3>Ocean View Resort</h3> <p>📍 Goa</p> <p class="price">₹5,499 / night</p> <button onclick="book('Ocean View Resort','₹5,499')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"> <h3>Goa Beach Resort</h3> <p>📍 Goa</p> <p class="price">₹6,200 / night</p> <button onclick="book('Goa Beach Resort','₹6,200')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80"> <h3>Sunset Paradise Hotel</h3> <p>📍 Goa</p> <p class="price">₹5,800 / night</p> <button onclick="book('Sunset Paradise Hotel','₹5,800')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"> <h3>Palm Tree Resort</h3> <p>📍 Goa</p> <p class="price">₹4,900 / night</p> <button onclick="book('Palm Tree Resort','₹4,900')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"> <h3>Blue Lagoon Stay</h3> <p>📍 Goa</p> <p class="price">₹5,300 / night</p> <button onclick="book('Blue Lagoon Stay','₹5,300')">Book Now</button> </div>
+
+<div class="card"> <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80"> <h3>Coastal Grand Hotel</h3> <p>📍 Goa</p> <p class="price">₹6,500 / night</p> <button onclick="book('Coastal Grand Hotel','₹6,500')">Book Now</button> </div>
+
+</div>
+
+<section id="features">
+
+<h2>Why Choose StayEase?</h2>
+
+<div class="features">
+
+<div class="feature"> 🏨 <h3>Best Hotels</h3> <p>Quality hotels</p> </div>
+
+<div class="feature"> 💰 <h3>Best Prices</h3> <p>Affordable rooms</p> </div>
+
+<div class="feature"> 🔒 <h3>Secure Booking</h3> <p>Safe reservations</p> </div>
+
+<div class="feature"> 📞 <h3>24/7 Support</h3> <p>Always available</p> </div>
+
+</div> </section>
+
+</div>
+
+<footer> © 2026 StayEase | Hotel Booking Platform </footer>
+
+<div class="modal" id="loginBox"> <div class="box"> <span class="close" onclick="closeBox()">✖️</span> <h2>Login</h2> <input type="email" placeholder="Email"> <input type="password" placeholder="Password"> <button onclick="doLogin()">Login</button> </div> </div>
+
+<div class="modal" id="bookBox"> <div class="box">
+
+<span class="close" onclick="closeBox()">✖️</span>
+
+<h2>Book Hotel</h2>
+
+<input id="hotel" readonly> <input id="price" readonly>
+
+<input type="text" placeholder="Your Name"> <input type="email" placeholder="Email">
+
+<label>Check-in</label>
+<input type="date">
+
+<label>Check-out</label>
+<input type="date">
+
+<select> <option>1 Guest</option> <option>2 Guests</option> <option>3 Guests</option> <option>4 Guests</option> </select>
+
+<button onclick="confirmBooking()">Confirm Booking</button>
+
+</div> </div>
+
+<script> function login(){ document.getElementById("loginBox").style.display="flex"; } function doLogin(){ alert("Login successful!"); closeBox(); } function book(name,price){ document.getElementById("hotel").value=name; document.getElementById("price").value=price; document.getElementById("bookBox").style.display="flex"; } function confirmBooking(){ alert("🎉 Booking confirmed successfully!"); closeBox(); } function closeBox(){ document.getElementById("loginBox").style.display="none"; document.getElementById("bookBox").style.display="none"; } function searchHotel(){ let search=document.getElementById("search").value.toLowerCase().trim(); document.querySelectorAll(".card").forEach(card=>{ let text=card.innerText.toLowerCase(); if(text.includes(search)){ card.style.display="block"; } else{ card.style.display="none"; } }); } window.onclick=function(event){ if(event.target.classList.contains("modal")){ closeBox(); } } </script>
+
+</body> </html>
